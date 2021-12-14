@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ReportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,8 +22,15 @@ use App\Http\Controllers\AuthController;
 //});
 
 Route::group([
-    'prefix' => 'auth',
     'middleware' => 'api',
 ], function ($router) {
     $router->post('/login', [AuthController::class, 'loginAction']);
+});
+
+Route::group([
+    'middleware' => ['jwt.verify']
+], function($router) {
+   $router->post('/logout', [AuthController::class, 'logoutAction']);
+   $router->get('/report-by-merchant', [ReportController::class, 'getReportByMerchant'])->name('report.merchant');
+   $router->get('/report-by-outlet', [ReportController::class, 'getReportByOutlet'])->name('report.outlet');
 });
