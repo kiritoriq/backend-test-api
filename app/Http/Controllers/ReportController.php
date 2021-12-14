@@ -31,6 +31,7 @@ class ReportController extends Controller
      */
     public function getReportByMerchant(Request $request)
     {
+        // call method getReportByMerchant in reportService
         $data = $this->service->getReportByMerchant($request->all());
         return response()->json([
             'status' => 'success',
@@ -51,6 +52,7 @@ class ReportController extends Controller
      */
     public function getReportByOutlet(Request $request)
     {
+        // call method getReportByOutlet in reportService
         $data = $this->service->getReportByOutlet($request->all());
         return response()->json([
             'status' => 'success',

@@ -20,7 +20,7 @@ class AuthController extends Controller
     }
 
     /**
-     * Get a JWT via given credentials.
+     * Log the user in and Get a JWT via given credentials.
      *
      * @return \Illuminate\Http\JsonResponse
      */
